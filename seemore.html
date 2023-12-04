@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>See More Example</title>
+</head>
+<body>
+  <div class="content">
+    <p id="text">
+      Lorem ipsum dolor sit amet, consectetur adipiscing dhdhd sasga agfagag afgag
+    </p>
+    <button id="seeMoreBtn" onclick="toggleText()">See More</button>
+  </div>
+  <script src="script.js"></script>
+  <script>
+   var textElement = document.getElementById("text");
+var btnElement = document.getElementById("seeMoreBtn");
+
+// Split the text into an array of words
+var words = textElement.innerText.split(' ');
+
+// Display the first 10 words initially
+var displayText = words.slice(0, 10).join(' ');
+
+// Check if there are more than 10 words
+var showEllipsis = words.length > 10;
+
+// Display the initial text with or without ellipsis
+textElement.innerHTML = showEllipsis ? displayText + '...' : displayText;
+
+// Hide the button if there are fewer than 10 words and no ellipsis
+if (!showEllipsis) {
+  btnElement.style.display = 'none';
+}
+
+function toggleText() {
+  if (textElement.innerText === displayText + '...') {
+    // Show all words when "See More" is clicked
+    textElement.innerText = words.join(' ');
+    btnElement.innerText = "See Less";
+  } else {
+    // Show only the first 10 words with ellipsis when "See Less" is clicked
+    textElement.innerText = displayText + (showEllipsis ? '...' : '');
+    btnElement.innerText = "See More";
+  }
+}
+
+  </script>
+</body>
+</html>
